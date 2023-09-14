@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from datetime import datetime
+import random
 
 class ScalableGraphPlotter:
     def __init__(self):
@@ -32,9 +33,24 @@ class ScalableGraphPlotter:
         plt.show()
 
 # Пример использования:
-graph_plotter = ScalableGraphPlotter()
-graph_plotter.add_data_point(10.5, "2023-09-14 10:00:00")
-graph_plotter.add_data_point(15.2, "2023-09-14 10:15:00")
-graph_plotter.add_data_point(8.7, "2023-09-14 10:30:00")
-graph_plotter.set_scale_factor(2.0)  # Увеличим масштаб в два раза
-graph_plotter.plot_graph()
+def main():
+    graph_plotter = ScalableGraphPlotter()
+    time_step =15
+    time_h = 10
+    time_m = 0
+    for point in range (0,20):
+        if time_m == 60:
+            time_h+=1
+            time_m = 0
+            graph_plotter.add_data_point(random.randint(0,256),
+                                         f"2023-09-14 {time_h}:{time_m}:00")
+        else:
+            graph_plotter.add_data_point(random.randint(0,256),
+                                        f"2023-09-14 {time_h}:{time_m}:00")
+            time_m+=time_step
+
+    graph_plotter.set_scale_factor(2.0)  # Увеличим масштаб в два раза
+    graph_plotter.plot_graph()
+
+if __name__ == "__main__":
+    main()
