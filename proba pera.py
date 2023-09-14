@@ -38,7 +38,7 @@ def main():
     time_step =15
     time_h = 10
     time_m = 0
-    for point in range (0,20):
+    for point in range (0,20): #тут можешь поиграться с кол-вом точек
         if time_m == 60:
             time_h+=1
             time_m = 0
